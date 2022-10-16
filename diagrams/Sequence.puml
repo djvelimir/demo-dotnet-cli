@@ -1,0 +1,39 @@
+@startuml
+participant Program as program
+participant IArgumentProcessor as argumentProcessor
+participant IArgumentValidator as argumentValidator
+participant IPasswordGenerator as passwordGenerator
+participant ITerminal as terminal
+
+activate program
+
+program -> argumentProcessor: Process(args)
+activate argumentProcessor
+
+argumentProcessor -> argumentValidator: Validate(args)
+activate argumentValidator
+argumentProcessor <-- argumentValidator: return are arguments valid
+deactivate argumentValidator
+
+alt#Gold #LightBlue Arguments are valid
+    argumentProcessor -> passwordGenerator: Generate()
+    activate passwordGenerator
+    argumentProcessor <-- passwordGenerator: return password
+    deactivate passwordGenerator
+
+    argumentProcessor -> terminal: Show(password)
+    activate terminal
+    argumentProcessor <-- terminal
+    deactivate terminal
+
+else #Pink Arguments are not valid
+    argumentProcessor -> terminal: Show(usage)
+    activate terminal
+    argumentProcessor <-- terminal
+    deactivate terminal
+end
+
+program <-- argumentProcessor
+deactivate argumentProcessor
+
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface IProgram {
+    + Start(args: String[])
+}
+
+class Program {
+    - argumentProcessor: IArgumentProcessor
+    + {static} Main(args: String[])
+}
+
+interface IArgumentValidator {
+    + Validate(args: String[]): boolean
+}
+
+class ArgumentValidator {
+}
+
+interface IArgumentProcessor {
+    + Process(args: String[])
+}
+
+class ArgumentProcessor {
+    - argumentValidator: ArgumentValidator
+    - passwordGenerator: PasswordGenerator
+    - terminal: Terminal
+}
+
+interface ITerminal {
+    + Show(message: String)
+}
+
+class Terminal {
+}
+
+interface IPasswordGenerator {
+    + Generate(): String
+}
+
+class PasswordGenerator {
+}
+
+IArgumentValidator <|-- ArgumentValidator
+IArgumentProcessor <|-- ArgumentProcessor
+ITerminal <|-- Terminal
+IPasswordGenerator <|-- PasswordGenerator
+IProgram <|-- Program
+
+Program *--l IArgumentProcessor
+
+ArgumentProcessor *--l IArgumentValidator
+ArgumentProcessor *--d IPasswordGenerator
+ArgumentProcessor *--r ITerminal
+@enduml
