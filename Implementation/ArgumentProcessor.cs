@@ -25,20 +25,8 @@ namespace demo_dotnet_cli.Implementation
                 return;
             }
 
-            switch (args[0])
-            {
-                default:
-                case "generate":
-                    switch (args[1])
-                    {
-                        default:
-                        case "password":
-                            String password = passwordGenerator.Generate();
-                            terminal.Show(password);
-                            break;
-                    }
-                    break;
-            }
+            String password = passwordGenerator.Generate();
+            terminal.Show(password);
         }
     }
 }
