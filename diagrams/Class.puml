@@ -1,4 +1,4 @@
-@startuml
+@startuml Class
 'https://plantuml.com/class-diagram
 
 interface IProgram {
@@ -22,9 +22,9 @@ interface IArgumentProcessor {
 }
 
 class ArgumentProcessor {
-    - argumentValidator: ArgumentValidator
-    - passwordGenerator: PasswordGenerator
-    - terminal: Terminal
+    - argumentValidator: IArgumentValidator
+    - passwordGenerator: IPasswordGenerator
+    - terminal: ITerminal
 }
 
 interface ITerminal {

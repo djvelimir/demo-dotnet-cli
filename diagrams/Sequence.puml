@@ -1,4 +1,4 @@
-@startuml
+@startuml Sequence
 participant Program as program
 participant IArgumentProcessor as argumentProcessor
 participant IArgumentValidator as argumentValidator
