@@ -1,4 +1,4 @@
-namespace demo_dotnet_cli
+namespace DemoDotnetCli
 {
     interface IProgram
     {

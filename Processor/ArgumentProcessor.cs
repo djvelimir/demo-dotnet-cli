@@ -1,6 +1,8 @@
-using demo_dotnet_cli.Interface;
+using DemoDotnetCli.Validator;
+using DemoDotnetCli.Generator;
+using DemoDotnetCli.Display;
 
-namespace demo_dotnet_cli.Implementation
+namespace DemoDotnetCli.Processor
 {
     public class ArgumentProcessor : IArgumentProcessor
     {

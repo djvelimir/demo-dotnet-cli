@@ -1,4 +1,4 @@
-namespace demo_dotnet_cli.Interface
+namespace DemoDotnetCli.Generator
 {
     public interface IPasswordGenerator
     {

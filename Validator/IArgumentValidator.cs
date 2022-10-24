@@ -1,4 +1,4 @@
-namespace demo_dotnet_cli.Interface
+namespace DemoDotnetCli.Validator
 {
     public interface IArgumentValidator
     {

@@ -1,6 +1,4 @@
-using demo_dotnet_cli.Interface;
-
-namespace demo_dotnet_cli.Implementation
+namespace DemoDotnetCli.Display
 {
     public class Terminal : ITerminal
     {

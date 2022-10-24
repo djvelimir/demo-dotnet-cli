@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using demo_dotnet_cli.Interface;
-using demo_dotnet_cli.Implementation;
+using DemoDotnetCli.Processor;
+using DemoDotnetCli.Validator;
+using DemoDotnetCli.Generator;
+using DemoDotnetCli.Display;
 
-namespace demo_dotnet_cli
+namespace DemoDotnetCli
 {
     class Program : IProgram
     {

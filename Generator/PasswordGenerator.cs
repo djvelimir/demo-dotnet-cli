@@ -1,7 +1,7 @@
 using System.Text;
-using demo_dotnet_cli.Interface;
+using DemoDotnetCli.Extension;
 
-namespace demo_dotnet_cli.Implementation
+namespace DemoDotnetCli.Generator
 {
     public class PasswordGenerator : IPasswordGenerator
     {
