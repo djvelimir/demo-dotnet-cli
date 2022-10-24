@@ -46,11 +46,8 @@ namespace DemoDotnetCli.Generator
                 stringBuilder.Append(UNION_OF_ALLOWED_CHARACTERS.GetRandomCharacter());
             }
 
-            // shuffle generated characters
-            string password = stringBuilder.ToString().Shuffle();
-
-            // return generated password
-            return password;
+            // return shuffled generated characters
+            return stringBuilder.ToString().Shuffle();
         }
     }
 }
