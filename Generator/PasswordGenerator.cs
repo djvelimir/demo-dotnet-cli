@@ -14,7 +14,6 @@ namespace DemoDotnetCli.Generator
                 LOWERCASE_CHARACTERS +
                 DIGIT_CHARACTERS +
                 SPECIAL_CHARACTERS;
-        private static readonly Random random = new Random();
 
         /// <summary>
         /// Generate random password
@@ -30,21 +29,21 @@ namespace DemoDotnetCli.Generator
             var stringBuilder = new StringBuilder();
 
             // generate at least one uppercase character
-            stringBuilder.Append(GenerateRandomCharacter(UPPERCASE_CHARACTERS));
+            stringBuilder.Append(UPPERCASE_CHARACTERS.GetRandomCharacter());
 
             // generate at least one lowercase character
-            stringBuilder.Append(GenerateRandomCharacter(LOWERCASE_CHARACTERS));
+            stringBuilder.Append(LOWERCASE_CHARACTERS.GetRandomCharacter());
 
             // generate at least one digit character
-            stringBuilder.Append(GenerateRandomCharacter(DIGIT_CHARACTERS));
+            stringBuilder.Append(DIGIT_CHARACTERS.GetRandomCharacter());
 
             // generate at least one special character
-            stringBuilder.Append(GenerateRandomCharacter(SPECIAL_CHARACTERS));
+            stringBuilder.Append(SPECIAL_CHARACTERS.GetRandomCharacter());
 
             for (int i = 4; i < PASSWORD_LENGTH; i++)
             {
                 // generate random character from union of allowed characters
-                stringBuilder.Append(GenerateRandomCharacter(UNION_OF_ALLOWED_CHARACTERS));
+                stringBuilder.Append(UNION_OF_ALLOWED_CHARACTERS.GetRandomCharacter());
             }
 
             // shuffle generated characters
@@ -53,11 +52,6 @@ namespace DemoDotnetCli.Generator
 
             // return generated password
             return string.Join("", ch);
-        }
-
-        private char GenerateRandomCharacter(String characters)
-        {
-            return characters.ElementAt(random.Next(characters.Length));
         }
     }
 }
