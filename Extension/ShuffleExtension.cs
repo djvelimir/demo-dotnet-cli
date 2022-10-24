@@ -4,7 +4,7 @@ namespace DemoDotnetCli.Extension
     {
         private static Random rng = new Random();
 
-        public static void Shuffle<T>(this IList<T> list)
+        private static void Shuffle<T>(IList<T> list)
         {
             int n = list.Count;
             while (n > 1)
@@ -15,6 +15,14 @@ namespace DemoDotnetCli.Extension
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+        public static string Shuffle(this string stringToShuffle)
+        {
+            IList<String> list = stringToShuffle.Split("").ToList();
+            Shuffle(list);
+
+            return string.Join("", list);
         }
     }
 }

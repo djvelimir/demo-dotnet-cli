@@ -47,11 +47,10 @@ namespace DemoDotnetCli.Generator
             }
 
             // shuffle generated characters
-            IList<String> ch = stringBuilder.ToString().Split("").ToList();
-            ch.Shuffle();
+            string password = stringBuilder.ToString().Shuffle();
 
             // return generated password
-            return string.Join("", ch);
+            return password;
         }
     }
 }
