@@ -39,6 +39,33 @@ interface IPasswordGenerator {
 }
 
 class PasswordGenerator {
+    - passwordLength: int
+    - randomCharacterGenerator: IRandomCharacterGenerator
+    - stringShuffler: IStringShuffler
+}
+
+interface IRandomCharacterGenerator {
+    + GenerateUppercaseCharacter(): char
+    + GenerateLowercaseCharacter(): char
+    + GenerateDigitCharacter(): char
+    + GenerateSpecialCharacter(): char
+    + GenerateAllowedCharacter(): char
+}
+
+class RandomCharacterGenerator {
+    - uppercaseCharacters: String
+    - lowercaseCharacters: String
+    - digitCharacters: String
+    - specialCharacters: String
+    - allowedCharacters: String
+    - random: Random
+}
+
+interface IStringShuffler {
+    + Shuffle(characters: String): String
+}
+
+class StringShuffler {
 }
 
 IArgumentValidator <|-- ArgumentValidator
@@ -46,10 +73,15 @@ IArgumentProcessor <|-- ArgumentProcessor
 ITerminal <|-- Terminal
 IPasswordGenerator <|-- PasswordGenerator
 IProgram <|-- Program
+IRandomCharacterGenerator <|-- RandomCharacterGenerator
+IStringShuffler <|-- StringShuffler
 
 Program *--l IArgumentProcessor
 
 ArgumentProcessor *--l IArgumentValidator
 ArgumentProcessor *--d IPasswordGenerator
 ArgumentProcessor *--r ITerminal
+
+PasswordGenerator *--l IRandomCharacterGenerator
+PasswordGenerator *--r IStringShuffler
 @enduml

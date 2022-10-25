@@ -4,6 +4,7 @@ using DemoDotnetCli.Processor;
 using DemoDotnetCli.Validator;
 using DemoDotnetCli.Generator;
 using DemoDotnetCli.Display;
+using DemoDotnetCli.Shuffler;
 
 namespace DemoDotnetCli
 {
@@ -22,10 +23,12 @@ namespace DemoDotnetCli
 
         private static void ConfigureServices(HostBuilderContext hostContext, IServiceCollection services)
         {
-            services.AddSingleton<IArgumentProcessor, ArgumentProcessor>();
-            services.AddSingleton<IArgumentValidator, ArgumentValidator>();
-            services.AddSingleton<IPasswordGenerator, PasswordGenerator>();
-            services.AddSingleton<ITerminal, Terminal>();
+            services.AddTransient<IArgumentProcessor, ArgumentProcessor>();
+            services.AddTransient<IArgumentValidator, ArgumentValidator>();
+            services.AddTransient<IPasswordGenerator, PasswordGenerator>();
+            services.AddTransient<IRandomCharacterGenerator, RandomCharacterGenerator>();
+            services.AddTransient<IStringShuffler, StringShuffler>();
+            services.AddTransient<ITerminal, Terminal>();
         }
 
         private IArgumentProcessor argumentProcessor;

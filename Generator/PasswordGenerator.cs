@@ -1,19 +1,20 @@
 using System.Text;
-using DemoDotnetCli.Extension;
+using DemoDotnetCli.Shuffler;
 
 namespace DemoDotnetCli.Generator
 {
     public class PasswordGenerator : IPasswordGenerator
     {
-        private static readonly int PASSWORD_LENGTH = 16;
-        private static readonly String UPPERCASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private static readonly String LOWERCASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
-        private static readonly String DIGIT_CHARACTERS = "0123456789";
-        private static readonly String SPECIAL_CHARACTERS = "~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
-        private static readonly String UNION_OF_ALLOWED_CHARACTERS = UPPERCASE_CHARACTERS +
-                LOWERCASE_CHARACTERS +
-                DIGIT_CHARACTERS +
-                SPECIAL_CHARACTERS;
+        private readonly int passwordLength;
+        private readonly IRandomCharacterGenerator randomCharacterGenerator;
+        private readonly IStringShuffler stringShuffler;
+
+        public PasswordGenerator(IRandomCharacterGenerator randomCharacterGenerator, IStringShuffler stringShuffler)
+        {
+            this.passwordLength = 16;
+            this.randomCharacterGenerator = randomCharacterGenerator;
+            this.stringShuffler = stringShuffler;
+        }
 
         /// <summary>
         /// Generate random password
@@ -28,26 +29,17 @@ namespace DemoDotnetCli.Generator
         {
             var stringBuilder = new StringBuilder();
 
-            // generate at least one uppercase character
-            stringBuilder.Append(UPPERCASE_CHARACTERS.GetRandomCharacter());
+            stringBuilder.Append(randomCharacterGenerator.GenerateUppercaseCharacter());
+            stringBuilder.Append(randomCharacterGenerator.GenerateLowercaseCharacter());
+            stringBuilder.Append(randomCharacterGenerator.GenerateDigitCharacter());
+            stringBuilder.Append(randomCharacterGenerator.GenerateSpecialCharacter());
 
-            // generate at least one lowercase character
-            stringBuilder.Append(LOWERCASE_CHARACTERS.GetRandomCharacter());
-
-            // generate at least one digit character
-            stringBuilder.Append(DIGIT_CHARACTERS.GetRandomCharacter());
-
-            // generate at least one special character
-            stringBuilder.Append(SPECIAL_CHARACTERS.GetRandomCharacter());
-
-            for (int i = 4; i < PASSWORD_LENGTH; i++)
+            for (int i = 0; i < passwordLength - 4; i++)
             {
-                // generate random character from union of allowed characters
-                stringBuilder.Append(UNION_OF_ALLOWED_CHARACTERS.GetRandomCharacter());
+                stringBuilder.Append(randomCharacterGenerator.GenerateAllowedCharacter());
             }
 
-            // return shuffled generated characters
-            return stringBuilder.ToString().Shuffle();
+            return stringShuffler.Shuffle(stringBuilder.ToString());
         }
     }
 }
