@@ -1,7 +1,6 @@
-namespace DemoDotnetCli
+namespace DemoDotnetCli;
+
+interface IProgram
 {
-    interface IProgram
-    {
-        void Start(string[] args);
-    }
+    void Start(string[] args);
 }

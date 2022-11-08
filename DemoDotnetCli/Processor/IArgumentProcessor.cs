@@ -1,7 +1,6 @@
-namespace DemoDotnetCli.Processor
+namespace DemoDotnetCli.Processor;
+
+public interface IArgumentProcessor
 {
-    public interface IArgumentProcessor
-    {
-        void Process(String[] args);
-    }
+    void Process(String[] args);
 }

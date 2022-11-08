@@ -1,24 +1,23 @@
-namespace DemoDotnetCli.Shuffler
+namespace DemoDotnetCli.Shuffler;
+
+public class StringShuffler : IStringShuffler
 {
-    public class StringShuffler : IStringShuffler
+    private readonly Random random = new Random();
+
+    public string Shuffle(string characters)
     {
-        private readonly Random random = new Random();
+        IList<string> list = characters.Split("").ToList();
+        int n = list.Count;
 
-        public string Shuffle(string characters)
+        while (n > 1)
         {
-            IList<string> list = characters.Split("").ToList();
-            int n = list.Count;
-
-            while (n > 1)
-            {
-                n--;
-                int k = random.Next(n + 1);
-                string value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
-
-            return string.Join("", list);
+            n--;
+            int k = random.Next(n + 1);
+            string value = list[k];
+            list[k] = list[n];
+            list[n] = value;
         }
+
+        return string.Join("", list);
     }
 }

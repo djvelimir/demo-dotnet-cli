@@ -1,10 +1,9 @@
-namespace DemoDotnetCli.Display
+namespace DemoDotnetCli.Display;
+
+public class Terminal : ITerminal
 {
-    public class Terminal : ITerminal
+    public void Show(string message)
     {
-        public void Show(string message)
-        {
-            Console.WriteLine(message);
-        }
+        Console.WriteLine(message);
     }
 }

@@ -1,7 +1,6 @@
-namespace DemoDotnetCli.Display
+namespace DemoDotnetCli.Display;
+
+public interface ITerminal
 {
-    public interface ITerminal
-    {
-        void Show(String message);
-    }
+    void Show(String message);
 }

@@ -1,7 +1,6 @@
-namespace DemoDotnetCli.Generator
+namespace DemoDotnetCli.Generator;
+
+public interface IPasswordGenerator
 {
-    public interface IPasswordGenerator
-    {
-        String Generate();
-    }
+    String Generate();
 }

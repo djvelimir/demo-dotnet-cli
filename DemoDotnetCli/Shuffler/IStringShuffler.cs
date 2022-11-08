@@ -1,7 +1,6 @@
-namespace DemoDotnetCli.Shuffler
+namespace DemoDotnetCli.Shuffler;
+
+public interface IStringShuffler
 {
-    public interface IStringShuffler
-    {
-        string Shuffle(string characters);
-    }
+    string Shuffle(string characters);
 }

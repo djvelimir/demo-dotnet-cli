@@ -1,15 +1,14 @@
-namespace DemoDotnetCli.Generator
+namespace DemoDotnetCli.Generator;
+
+public interface IRandomCharacterGenerator
 {
-    public interface IRandomCharacterGenerator
-    {
-        char GenerateUppercaseCharacter();
+    char GenerateUppercaseCharacter();
 
-        char GenerateLowercaseCharacter();
+    char GenerateLowercaseCharacter();
 
-        char GenerateDigitCharacter();
+    char GenerateDigitCharacter();
 
-        char GenerateSpecialCharacter();
+    char GenerateSpecialCharacter();
 
-        char GenerateAllowedCharacter();
-    }
+    char GenerateAllowedCharacter();
 }
