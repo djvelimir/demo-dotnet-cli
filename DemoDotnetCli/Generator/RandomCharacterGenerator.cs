@@ -15,10 +15,10 @@ public class RandomCharacterGenerator : IRandomCharacterGenerator
         lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
         digitCharacters = "0123456789";
         specialCharacters = "~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
-        allowedCharacters = uppercaseCharacters +
-            lowercaseCharacters +
-            digitCharacters +
-            specialCharacters;
+        allowedCharacters = uppercaseCharacters
+            + lowercaseCharacters
+            + digitCharacters
+            + specialCharacters;
     }
 
     public char GenerateAllowedCharacter()

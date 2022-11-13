@@ -6,7 +6,7 @@ public class StringShuffler : IStringShuffler
 
     public string Shuffle(string characters)
     {
-        IList<string> list = characters.Split("").ToList();
+        IList<string> list = characters.Select(x => x.ToString()).ToList();
         int n = list.Count;
 
         while (n > 1)
