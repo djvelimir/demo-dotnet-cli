@@ -30,12 +30,12 @@ public class ArgumentProcessorTest
 
     [Theory, AutoMoqData]
     public void ProcessMethodForInvalidArgumentsTest(
-        String[] args,
+        string[] args,
         [Frozen] IArgumentValidator argumentValidator,
         [Frozen] ITerminal terminal,
         ArgumentProcessor argumentProcessor)
     {
-        String usage = "Usage:" + Environment.NewLine +
+        string usage = "Usage:" + Environment.NewLine +
                     "./demo-dotnet-cli generate password";
 
         Mock.Get(argumentValidator).Setup(x => x.Validate(It.Is<string[]>(x => x.Equals(args)))).Returns(false);

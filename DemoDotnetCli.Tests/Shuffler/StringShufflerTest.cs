@@ -7,8 +7,8 @@ public class StringShufflerTest
     [Theory, AutoMoqData]
     public void checkShuffleMethod(StringShuffler stringShuffler)
     {
-        String sample = "1A8!(,wV5YuI[Vr^>";
-        String actual = stringShuffler.Shuffle(sample);
+        string sample = "1A8!(,wV5YuI[Vr^>";
+        string actual = stringShuffler.Shuffle(sample);
 
         Assert.NotEqual(sample, actual);
         Assert.Equal(sample.Length, actual.Length);

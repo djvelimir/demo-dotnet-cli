@@ -2,5 +2,5 @@ namespace DemoDotnetCli.Validator;
 
 public interface IArgumentValidator
 {
-    bool Validate(String[] args);
+    bool Validate(string[] args);
 }

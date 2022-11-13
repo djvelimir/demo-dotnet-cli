@@ -10,7 +10,7 @@ namespace DemoDotnetCli;
 
 class Program : IProgram
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         Host.CreateDefaultBuilder()
             .ConfigureServices(ConfigureServices)

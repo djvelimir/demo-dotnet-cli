@@ -17,17 +17,17 @@ public class ArgumentProcessor : IArgumentProcessor
         this.terminal = terminal;
     }
 
-    public void Process(String[] args)
+    public void Process(string[] args)
     {
         if (!argumentValidator.Validate(args))
         {
-            String usage = "Usage:" + Environment.NewLine +
+            string usage = "Usage:" + Environment.NewLine +
                     "./demo-dotnet-cli generate password";
             terminal.Show(usage);
             return;
         }
 
-        String password = passwordGenerator.Generate();
+        string password = passwordGenerator.Generate();
         terminal.Show(password);
     }
 }

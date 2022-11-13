@@ -2,5 +2,5 @@ namespace DemoDotnetCli.Display;
 
 public interface ITerminal
 {
-    void Show(String message);
+    void Show(string message);
 }

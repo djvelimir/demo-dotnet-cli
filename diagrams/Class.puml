@@ -2,23 +2,23 @@
 'https://plantuml.com/class-diagram
 
 interface IProgram {
-    + Start(args: String[])
+    + Start(args: string[])
 }
 
 class Program {
     - argumentProcessor: IArgumentProcessor
-    + {static} Main(args: String[])
+    - {static} Main(args: string[])
 }
 
 interface IArgumentValidator {
-    + Validate(args: String[]): boolean
+    + Validate(args: string[]): boolean
 }
 
 class ArgumentValidator {
 }
 
 interface IArgumentProcessor {
-    + Process(args: String[])
+    + Process(args: string[])
 }
 
 class ArgumentProcessor {
@@ -28,14 +28,14 @@ class ArgumentProcessor {
 }
 
 interface ITerminal {
-    + Show(message: String)
+    + Show(message: string)
 }
 
 class Terminal {
 }
 
 interface IPasswordGenerator {
-    + Generate(): String
+    + Generate(): string
 }
 
 class PasswordGenerator {
@@ -53,16 +53,16 @@ interface IRandomCharacterGenerator {
 }
 
 class RandomCharacterGenerator {
-    - uppercaseCharacters: String
-    - lowercaseCharacters: String
-    - digitCharacters: String
-    - specialCharacters: String
-    - allowedCharacters: String
+    - uppercaseCharacters: string
+    - lowercaseCharacters: string
+    - digitCharacters: string
+    - specialCharacters: string
+    - allowedCharacters: string
     - random: Random
 }
 
 interface IStringShuffler {
-    + Shuffle(characters: String): String
+    + Shuffle(characters: string): string
 }
 
 class StringShuffler {

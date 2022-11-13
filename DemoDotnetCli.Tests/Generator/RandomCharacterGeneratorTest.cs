@@ -4,11 +4,11 @@ namespace DemoDotnetCli.Tests.Generator;
 
 public class RandomCharacterGeneratorTest
 {
-    private readonly String uppercaseCharacters;
-    private readonly String lowercaseCharacters;
-    private readonly String digitCharacters;
-    private readonly String specialCharacters;
-    private readonly String allowedCharacters;
+    private readonly string uppercaseCharacters;
+    private readonly string lowercaseCharacters;
+    private readonly string digitCharacters;
+    private readonly string specialCharacters;
+    private readonly string allowedCharacters;
 
     public RandomCharacterGeneratorTest()
     {

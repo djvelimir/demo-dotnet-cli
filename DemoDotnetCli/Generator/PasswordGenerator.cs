@@ -25,7 +25,7 @@ public class PasswordGenerator : IPasswordGenerator
     /// Generated password contains at least one special character
     /// </summary>
     /// <returns>Generated password</returns>
-    public String Generate()
+    public string Generate()
     {
         var stringBuilder = new StringBuilder();
 
