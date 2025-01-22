@@ -1,0 +1,29 @@
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: Create Release
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            **Release Notes: demo-dotnet-cli Password Generator Application**
+
+            We are excited to announce the release of demo-dotnet-cli, a robust password generator application built with .NET Core. This tool allows users to effortlessly create secure passwords. In this initial version, users can generate passwords of 16 characters, featuring a mix of uppercase letters, lowercase letters, numbers, and special characters to enhance security. The application is designed for simplicity and efficiency, making it an essential tool for developers and users alike who prioritize security in their applications. Stay tuned for future updates that will expand functionality and improve user experience!
+          draft: false
+          prerelease: false
