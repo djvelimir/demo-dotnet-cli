@@ -1,6 +1,4 @@
 @startuml Class
-!theme amiga
-
 interface IProgram {
     + Start(args: string[])
 }
