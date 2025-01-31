@@ -1,5 +1,5 @@
 @startuml Class
-'https://plantuml.com/class-diagram
+!theme amiga
 
 interface IProgram {
     + Start(args: string[])
