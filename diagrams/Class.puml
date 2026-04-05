@@ -57,7 +57,6 @@ class RandomCharacterGenerator {
     - specialCharacters: string
     - allowedCharacters: string
     - random: RandomNumberGenerator
-    - RandomNext(maxValue: int): int
 }
 
 interface IStringShuffler {
@@ -66,7 +65,6 @@ interface IStringShuffler {
 
 class StringShuffler {
     - random: RandomNumberGenerator
-    - RandomNext(maxValue: int): int
 }
 
 IArgumentValidator <|-- ArgumentValidator

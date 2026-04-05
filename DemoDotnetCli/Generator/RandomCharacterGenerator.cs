@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using DemoDotnetCli.Extensions;
 
 namespace DemoDotnetCli.Generator;
 
@@ -26,34 +27,26 @@ public class RandomCharacterGenerator : IRandomCharacterGenerator
 
     public char GenerateAllowedCharacter()
     {
-        return allowedCharacters.ElementAt(RandomNext(allowedCharacters.Length));
+        return allowedCharacters.ElementAt(random.Next(allowedCharacters.Length));
     }
 
     public char GenerateDigitCharacter()
     {
-        return digitCharacters.ElementAt(RandomNext(digitCharacters.Length));
+        return digitCharacters.ElementAt(random.Next(digitCharacters.Length));
     }
 
     public char GenerateLowercaseCharacter()
     {
-        return lowercaseCharacters.ElementAt(RandomNext(lowercaseCharacters.Length));
+        return lowercaseCharacters.ElementAt(random.Next(lowercaseCharacters.Length));
     }
 
     public char GenerateSpecialCharacter()
     {
-        return specialCharacters.ElementAt(RandomNext(specialCharacters.Length));
+        return specialCharacters.ElementAt(random.Next(specialCharacters.Length));
     }
 
     public char GenerateUppercaseCharacter()
     {
-        return uppercaseCharacters.ElementAt(RandomNext(uppercaseCharacters.Length));
-    }
-
-    private int RandomNext(int maxValue)
-    {
-        byte[] bytes = new byte[4];
-        random.GetBytes(bytes);
-        int value = BitConverter.ToInt32(bytes, 0) & int.MaxValue;
-        return value % maxValue;
+        return uppercaseCharacters.ElementAt(random.Next(uppercaseCharacters.Length));
     }
 }
