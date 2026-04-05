@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace DemoDotnetCli.Generator;
 
 public class RandomCharacterGenerator : IRandomCharacterGenerator
@@ -7,7 +9,7 @@ public class RandomCharacterGenerator : IRandomCharacterGenerator
     private readonly string digitCharacters;
     private readonly string specialCharacters;
     private readonly string allowedCharacters;
-    private readonly Random random = new Random();
+    private readonly RandomNumberGenerator random;
 
     public RandomCharacterGenerator()
     {
@@ -19,30 +21,39 @@ public class RandomCharacterGenerator : IRandomCharacterGenerator
             + lowercaseCharacters
             + digitCharacters
             + specialCharacters;
+        random = RandomNumberGenerator.Create();
     }
 
     public char GenerateAllowedCharacter()
     {
-        return allowedCharacters.ElementAt(random.Next(allowedCharacters.Length));
+        return allowedCharacters.ElementAt(RandomNext(allowedCharacters.Length));
     }
 
     public char GenerateDigitCharacter()
     {
-        return digitCharacters.ElementAt(random.Next(digitCharacters.Length));
+        return digitCharacters.ElementAt(RandomNext(digitCharacters.Length));
     }
 
     public char GenerateLowercaseCharacter()
     {
-        return lowercaseCharacters.ElementAt(random.Next(lowercaseCharacters.Length));
+        return lowercaseCharacters.ElementAt(RandomNext(lowercaseCharacters.Length));
     }
 
     public char GenerateSpecialCharacter()
     {
-        return specialCharacters.ElementAt(random.Next(specialCharacters.Length));
+        return specialCharacters.ElementAt(RandomNext(specialCharacters.Length));
     }
 
     public char GenerateUppercaseCharacter()
     {
-        return uppercaseCharacters.ElementAt(random.Next(uppercaseCharacters.Length));
+        return uppercaseCharacters.ElementAt(RandomNext(uppercaseCharacters.Length));
+    }
+
+    private int RandomNext(int maxValue)
+    {
+        byte[] bytes = new byte[4];
+        random.GetBytes(bytes);
+        int value = BitConverter.ToInt32(bytes, 0) & int.MaxValue;
+        return value % maxValue;
     }
 }
